@@ -1,5 +1,5 @@
 class Family < ApplicationRecord
+  has_many :items
 
-  has_many :user
   validates :name, presence: true
 end

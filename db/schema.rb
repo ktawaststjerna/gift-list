@@ -26,8 +26,12 @@ ActiveRecord::Schema.define(version: 20161106230423) do
     t.string   "link"
     t.string   "detail"
     t.boolean  "item_bought"
+    t.integer  "family_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["family_id"], name: "index_items_on_family_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

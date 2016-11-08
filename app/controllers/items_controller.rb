@@ -13,15 +13,15 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-    # respond_to do |format|
-    #   if @item.save
-    #     format.html { redirect_to @item, notice: 'Item was successfully created.' }
-    #     format.json { render :show, status: :created, location: @item }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @item.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @item.save
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.json { render :show, status: :created, location: @item }
+      else
+        format.html { render :new }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
@@ -52,6 +52,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :quantity, :colour, :size, :link, :detail, :item_bought)
+      params.require(:item).permit(:name, :quantity, :colour, :size, :link, :detail, :item_bought, :user_id, :family_id)
     end
 end
