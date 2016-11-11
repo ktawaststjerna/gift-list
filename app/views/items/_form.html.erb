@@ -42,8 +42,16 @@
   </div>
 
   <div class="field">
+    <strong>Family</strong>
+    <%= f.label "McMahon" %>
+    <%= f.radio_button :family_id, 1 %>
+    <%= f.label "Tawaststjerna" %>
+    <%= f.radio_button :family_id, 2 %>
+  </div>
+
+  <div class="field">
     <%= f.label :item_bought %>
-    <%= f.check_box :item_bought %>
+    <%= f.check_box :item_bought, checked: false %>
   </div>
 
   <div class="actions">
