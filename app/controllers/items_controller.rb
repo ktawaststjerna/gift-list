@@ -10,8 +10,13 @@ class ItemsController < ApplicationController
     render json: {}, status: :not_implemented
   end
 
+  def new
+    @item = Item.new
+  end
+
   def create
     @item = Item.new(item_params)
+    @item.user_id = current_user.id
 
     respond_to do |format|
       if @item.save
@@ -27,7 +32,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to controller: 'items', action: 'index'}
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }

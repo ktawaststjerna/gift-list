@@ -4,4 +4,6 @@ class Item < ApplicationRecord
 
   validates :user, :name, :quantity, :link, presence: true
   validates :family, presence: true
+
+  #enum family_id: [:mcmahon, :tawaststjerna]
 end
