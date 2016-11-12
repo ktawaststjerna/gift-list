@@ -5,13 +5,14 @@
 <table>
   <thead>
     <tr>
+      <th>User Name</th>
+      <th>Family</th>
       <th>Name</th>
       <th>Quantity</th>
       <th>Colour</th>
       <th>Size</th>
       <th>Link</th>
       <th>Detail</th>
-      <th>Item bought</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,14 +20,15 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.name %></td>
+        <td><%= item.user.name.capitalize %></td>
+        <td><%= item.family.name %></td>
+        <td><%= item.name.capitalize %></td>
         <td><%= item.quantity %></td>
         <td><%= item.colour %></td>
         <td><%= item.size %></td>
         <td><%= item.link %></td>
         <td><%= item.detail %></td>
-        <td><%= item.item_bought %></td>
-        <td><%= link_to 'Show', item %></td>
+        <!--<td><%= link_to 'Show', item %></td>-->
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
