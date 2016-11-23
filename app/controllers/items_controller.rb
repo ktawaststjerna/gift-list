@@ -2,16 +2,21 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action only: [:edit, :update, :destroy] {permission}
 
-
   def index
-    family_ids_array = []
+    # family_ids_array = []
+    # item_ids = []
+    # current_user.families.each {|family| family_ids_array << family.id}
+    # @family_items = Item.where(family_id: family_ids_array.uniq)
+    # @family_items.each do |item|  
+    #   item_ids << item.id unless (item.item_bought == true && item.user.id != current_user.id)
+    # end
+    # @items = Item.where(id: item_ids,family_id: family_ids_array.uniq)
+
+    families = current_user.families
     item_ids = []
-    current_user.families.each {|family| family_ids_array << family.id}
-    @family_items = Item.where(family_id: family_ids_array.uniq)
-    @family_items.each do |item|  
-      item_ids << item.id unless (item.item_bought == true && item.user.id != current_user.id)
-    end
-    @items = Item.where(id: item_ids,family_id: family_ids_array.uniq)
+    families.each {|x| item_ids << x.items.pluck(:id)}
+
+    @items = Item.where(id: [item_ids])
   end
 
   def show

@@ -1,9 +1,9 @@
 class Item < ApplicationRecord
+  include PipeConcern
+
   belongs_to :user
-  belongs_to :family
-
+  has_many :families, :through => :to_pipes, :source => :from, :source_type => 'Family'
+  
   validates :user, :name, :quantity, :link, presence: true
-  validates :family, presence: true
-
-  #enum family_id: [:mcmahon, :tawaststjerna]
+  # validates :family, presence: true
 end
