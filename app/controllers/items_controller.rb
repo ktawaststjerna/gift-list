@@ -3,20 +3,11 @@ class ItemsController < ApplicationController
   before_action only: [:edit, :update, :destroy] {permission}
 
   def index
-    # family_ids_array = []
-    # item_ids = []
-    # current_user.families.each {|family| family_ids_array << family.id}
-    # @family_items = Item.where(family_id: family_ids_array.uniq)
-    # @family_items.each do |item|  
-    #   item_ids << item.id unless (item.item_bought == true && item.user.id != current_user.id)
-    # end
-    # @items = Item.where(id: item_ids,family_id: family_ids_array.uniq)
-
     families = current_user.families
     item_ids = []
-    families.each {|x| item_ids << x.items.pluck(:id)}
+    families.each {|family| item_ids << family.items.pluck(:id)}
 
-    @items = Item.where(id: [item_ids])
+    @items = Item.where(id: item_ids.uniq)
   end
 
   def show
@@ -33,6 +24,18 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
+
+        current_user.to_pipes.each do |pipe|
+          if pipe.from_type == "Family"
+            Pipe.create(
+              to_id: @item.id,
+              to_type: "Item",
+              from_id: pipe.from_id,
+              from_type: "Family"
+            )
+          end
+        end
+
         format.html { redirect_to controller: 'items', action: 'index' }
         format.json { render :show, status: :created, location: @item }
       else
