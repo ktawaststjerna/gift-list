@@ -1,11 +1,15 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] {permission}
+  before_action only: [:destroy] {permission}
 
   def index
     families = current_user.families
     item_ids = []
-    families.each {|family| item_ids << family.items.pluck(:id)}
+    families.each do |family|
+      family.items.each do |item|
+        item_ids << item.id unless (item.item_bought == true && item.user.id != current_user.id)
+      end
+    end
 
     @items = Item.where(id: item_ids.uniq)
   end
