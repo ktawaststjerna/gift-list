@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-    <% @items.each do |item| %>
+    <% @items.order(:name).each do |item| %>
       <tr>
         <td><%= item.user.name.capitalize %></td>
         <td><%= item.name.capitalize %></td>
