@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123230424) do
+ActiveRecord::Schema.define(version: 20161128230430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20161123230424) do
     t.string   "name"
     t.integer  "quantity"
     t.string   "colour"
-    t.integer  "size"
+    t.string   "size"
     t.string   "link"
     t.string   "detail"
     t.boolean  "item_bought"
