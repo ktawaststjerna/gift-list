@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :item_bought]
   before_action only: [:destroy] {permission}
 
   def index
@@ -65,6 +65,14 @@ class ItemsController < ApplicationController
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def item_bought
+    @item.update(item_bought: true)
+    respond_to do |format|
+      format.html { redirect_to items_url, notice: 'Item was successfully bought.' }
       format.json { head :no_content }
     end
   end
