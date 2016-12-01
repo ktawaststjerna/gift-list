@@ -17,7 +17,7 @@
   </thead>
 
   <tbody>
-    <% @items.order(:name).each do |item| %>
+    <% @items.includes(:user).order("users.name asc, items.name asc").each do |item| %>
       <tr>
         <td><%= item.user.name.capitalize %></td>
         <td><%= item.name.capitalize %></td>
@@ -26,7 +26,7 @@
         <td><%= item.size %></td>
         <td><a href=<%=item.link %>>Link</td>
         <td><%= item.detail %></td>
-        <!--<td><%= link_to 'Show', item %></td>-->
+        <td><%= button_to "Item Bought", item_bought_path(item.id),id: "item_#{item.id}",method: :put %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

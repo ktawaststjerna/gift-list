@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
+  put '/item_bought/:id' => "items#item_bought", as: :item_bought
+
   resources :items
   resources :users
   resources :families
