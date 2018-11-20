@@ -27,7 +27,7 @@
         <td><%= item.size %></td>
         <td><a href=<%=item.link %>>Link</td>
         <td><%= item.detail %></td>
-        <td><%= item.created_at %></td>
+        <td><%= item.created_at.strftime("%Y/%m/%d") %></td>
         <td><%= button_to "Item Bought", item_bought_path(item.id),id: "item_#{item.id}",method: :put, data: { confirm: 'Are you sure the item is bought? The item will disappear from your list if you say yes!' } %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
