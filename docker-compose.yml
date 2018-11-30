@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  gift-list:
+    env_file:
+      - .env
+    build: .
+    volumes:
+      - .:/var/www
+    ports:
+      - "3050:3000"
+    links:
+      - db
+
+  db:
+    image: postgres:9.6-alpine

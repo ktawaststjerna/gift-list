@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.5.3'
+
 gem 'rails', '~> 5.0.0'
 gem 'pg'
 gem 'puma', '~> 3.0'
@@ -23,4 +25,5 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data'

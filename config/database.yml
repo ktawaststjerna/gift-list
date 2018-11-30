@@ -1,21 +1,17 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
   adapter: postgresql
   encoding: unicode
   pool: 60
   timeout: 5000
-  # username: postgres
-  # password:
-  # host: db
+  username: postgres
+  password:
+  host: db
 
 development:
   <<: *default
   database: giftlist_development
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,3 +23,5 @@ test:
 production:
   <<: *default
   database: giftlist_production
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
