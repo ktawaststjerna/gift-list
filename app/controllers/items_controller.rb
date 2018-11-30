@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy, :item_bought]
-  before_action only: [:destroy] {permission}
 
   def index
     families = current_user.families
@@ -62,6 +61,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    return render json: {error: "Not Authorized"} unless permission
+
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
@@ -89,6 +90,6 @@ class ItemsController < ApplicationController
     end
 
     def permission
-      return render json: {error: "Not Authorized"}, status: :unauthorized unless @item.user.id == current_user.id
+      @item.user.id == current_user.id
     end
 end

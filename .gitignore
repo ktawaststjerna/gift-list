@@ -38,3 +38,4 @@ scratchpad.rb
 .vagrant*
 client_migration/*.csv
 .vscode/
+.env
