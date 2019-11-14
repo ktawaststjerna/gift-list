@@ -1,0 +1,3 @@
+# Add 'WorkflowChanges' to any changes within '.github/workflows' folder or any subfolders
+WorkflowChanges:
+  - .github/workflows/*
