@@ -6,7 +6,8 @@ class ItemsController < ApplicationController
     item_ids = []
     families.each do |family|
       family.items.each do |item|
-        item_ids << item.id unless (item.item_bought == true && item.user.id != current_user.id)
+        # item_ids << item.id unless (item.item_bought == true && item.user.id != current_user.id)
+        item_ids << item.id
       end
     end
 
@@ -71,7 +72,8 @@ class ItemsController < ApplicationController
   end
 
   def item_bought
-    @item.update(item_bought: true)
+    return render json: { error: @item.errors }, status: :bad_request unless @item.buy_item(current_user.name)
+
     respond_to do |format|
       format.html { redirect_to items_url, notice: 'Item was successfully bought.' }
       format.json { head :no_content }
