@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Items</h1>
+<h2>You Are: <%= current_user.name %></h2>
 
 <table>
   <thead>
@@ -13,18 +14,14 @@
       <th>Link</th>
       <th>Detail</th>
       <th>Date Created</th>
+      <th>Bought By</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <style type="text/css">
-      tr:nth-child(2n) {
-             background-color: #E6E6E6;
-        }
-    </style>
     <% @items.includes(:user).order("users.name asc, items.name asc").each do |item| %>
-      <tr>
+      <tr class="<%= cycle('even', 'odd') -%>">
         <td><%= item.user.name.capitalize %></td>
         <td><%= item.name.capitalize %></td>
         <td><%= item.quantity %></td>
@@ -33,7 +30,10 @@
         <td><a href=<%=item.link %>>Link</td>
         <td><%= item.detail %></td>
         <td><%= item.created_at.strftime("%Y/%m/%d") %></td>
-        <td><%= button_to "Item Bought", item_bought_path(item.id),id: "item_#{item.id}",method: :put, data: { confirm: 'Are you sure the item is bought? The item will disappear from your list if you say yes!' } %></td>
+        <td class=<%= 'bought' if (item.item_bought && item.user != current_user)%> >
+          <%= item.user != current_user ? item.bought_by : ''  %>
+        </td>
+        <td><%= button_to "Item Bought", item_bought_path(item.id), id: "item_#{item.id}", method: :put, data: { confirm: 'Are you sure the item is bought? The item will disappear from your list if you say yes!' } %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
