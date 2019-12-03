@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-
         current_user.to_pipes.each do |pipe|
           if pipe.from_type == "Family"
             Pipe.create(

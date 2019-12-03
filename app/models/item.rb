@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   has_many :families, :through => :to_pipes, :source => :from, :source_type => 'Family'
 
   validates :user, :name, :link, presence: true
+  validates :quantity, :numericality => { :greater_than_or_equal_to => 1 }, allow_nil: true
 
   def buy_item(name)
     if name == user.name
