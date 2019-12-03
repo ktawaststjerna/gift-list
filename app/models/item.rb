@@ -7,9 +7,15 @@ class Item < ApplicationRecord
   validates :user, :name, :link, presence: true
 
   def buy_item(name)
-    errors.add(:buy_item, 'Cannot buy your own item. If you would like to remove it, delete the item.') if name == user.name
-    errors.add(:buy_item, "Cannot buy item as it has already been bought by #{bought_by}") if item_bought || bought_by
-    return false if errors.present?
+    if name == user.name
+      errors.add(:buy_item, 'Cannot buy your own item. If you would like to remove it, delete the item.')
+      return false
+    end
+
+    if item_bought || bought_by
+      errors.add(:buy_item, "Cannot buy item as it has already been bought by #{bought_by}")
+      return false
+    end
 
     update(item_bought: true, bought_by: name)
   end
