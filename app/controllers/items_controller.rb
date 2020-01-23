@@ -5,8 +5,7 @@ class ItemsController < ApplicationController
     families = current_user.families
     item_ids = []
     families.each do |family|
-      family.items.each do |item|
-        # item_ids << item.id unless (item.item_bought == true && item.user.id != current_user.id)
+      family.items.where(archived: [false, nil]).each do |item|
         item_ids << item.id
       end
     end
