@@ -1,16 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy, :item_bought]
+  before_action :set_item, only: %i[show edit update destroy item_bought]
 
   def index
-    families = current_user.families
-    item_ids = []
-    families.each do |family|
-      family.items.where(archived: [false, nil]).each do |item|
-        item_ids << item.id
-      end
-    end
-
-    @items = Item.where(id: item_ids.uniq)
+    @items = current_user.family_items
   end
 
   def show
@@ -31,9 +23,9 @@ class ItemsController < ApplicationController
           if pipe.from_type == "Family"
             Pipe.create(
               to_id: @item.id,
-              to_type: "Item",
+              to_type: 'Item',
               from_id: pipe.from_id,
-              from_type: "Family"
+              from_type: 'Family'
             )
           end
         end
@@ -60,7 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    return render json: {error: "Not Authorized"} unless permission
+    return render json: { error: 'Not Authorized' } unless permission
 
     @item.destroy
     respond_to do |format|
@@ -79,17 +71,17 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def item_params
-      params.require(:item).permit(:name, :quantity, :colour, :size, :link, :detail, :item_bought, :user_id, :family_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def item_params
+    params.require(:item).permit(:name, :quantity, :colour, :size, :link, :detail, :item_bought, :user_id, :family_id)
+  end
 
-    def permission
-      @item.user.id == current_user.id
-    end
+  def permission
+    @item.user.id == current_user.id
+  end
 end
