@@ -20,7 +20,7 @@
   </thead>
 
   <tbody>
-    <% @items.includes(:user).order("users.name asc, items.name asc").each do |item| %>
+    <% @items.each do |item| %>
       <tr class="<%= cycle('even', 'odd') -%>">
         <td><%= item.user.name.capitalize %></td>
         <td><%= item.name.capitalize %></td>
