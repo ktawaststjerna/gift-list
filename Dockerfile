@@ -24,4 +24,4 @@ ADD . /var/www
 
 # Final touchups
 ENTRYPOINT [ "/sbin/tini", "-sgvv", "--" ]
-CMD ["/var/www/entrypoint.sh"]
+CMD rails s

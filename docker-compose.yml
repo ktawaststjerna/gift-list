@@ -8,9 +8,13 @@ services:
     volumes:
       - .:/var/www
     ports:
-      - "3050:3000"
+      - "3000:3000"
     links:
       - db
 
   db:
     image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER=foo
+      - POSTGRES_PASSWORD=foobar
+      - POSTGRES_DB=giftlist_development
