@@ -7,7 +7,5 @@ Rails.application.routes.draw do
 
   put '/item_bought/:id' => "items#item_bought", as: :item_bought
 
-  resources :items
-  resources :users
-  resources :families
+  resources :items, only: %i[index show new create update destroy]
 end
