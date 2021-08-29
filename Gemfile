@@ -5,25 +5,25 @@ ruby '2.5.3'
 gem 'rails', '~> 6.1.0'
 gem 'pg', '~> 1.2', '>= 1.2.3'
 gem 'puma', '~> 5.4'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
-gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
+gem 'sass-rails', '~> 6.0'
+gem 'uglifier', '~> 4.2'
+gem 'coffee-rails', '~> 5.0'
+gem 'jquery-rails', '~> 4.4'
+gem 'turbolinks', '~> 5.2', '>= 5.2.1'
 gem 'jbuilder', '~> 2.5'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'byebug', '~> 11.1', '>= 11.1.3', platform: :mri
 end
 
 group :development do
-  gem 'web-console'
-  gem 'listen', '~> 3.0.5'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '~> 4.1'
+  gem 'listen', '~> 3.7'
+  gem 'spring', '~> 2.1', '>= 2.1.1'
+  gem 'spring-watcher-listen', '~> 2.0', '>= 2.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 # gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'tzinfo-data'
+gem 'tzinfo-data', '~> 1.2021', '>= 1.2021.1'
