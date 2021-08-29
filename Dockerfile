@@ -24,4 +24,4 @@ ADD . /var/www
 
 # Final touchups
 ENTRYPOINT [ "/sbin/tini", "-sgvv", "--" ]
-CMD puma
+CMD bin/rails server -b 0.0.0.0
