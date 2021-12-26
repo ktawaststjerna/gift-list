@@ -33,7 +33,7 @@
         <td><%= item.colour %></td>
         <td><%= item.detail %></td>
         <td><%= item.created_at.strftime("%Y/%m/%d") %></td>
-        <td><%= button_to "Gift Bought", item_bought_path(item.id), id: "item_#{item.id}", method: :put, data: { confirm: 'Are you sure the item is bought? The item will disappear from your list if you say yes!' } %></td>
+        <td><%= button_to "Gift Bought", item_bought_path(item.id), id: "item_#{item.id}", method: :put, data: { confirm: 'Are you sure the item is bought? The item will be marked with your name if you say yes!' } %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
