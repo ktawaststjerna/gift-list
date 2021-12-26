@@ -27,7 +27,7 @@
         <td class=<%= 'bought' if (item.item_bought && item.user != current_user)%> >
           <%= item.user != current_user ? item.bought_by : ''  %>
         </td>
-        <td><a href=<%=item.link %>>Link</td>
+        <td><%= link_to(item.link, item.link) %></td>
         <td><%= item.quantity %></td>
         <td><%= item.size %></td>
         <td><%= item.colour %></td>
