@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Items</h1>
+<h1>Gifts</h1>
 <h2>You Are: <%= current_user.name %></h2>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Item</th>
-      <th>Quantity</th>
-      <th>Colour</th>
-      <th>Size</th>
-      <th>Link</th>
-      <th>Detail</th>
-      <th>Date Created</th>
+      <th>Gift</th>
       <th>Bought By</th>
+      <th>Link</th>
+      <th>Quantity</th>
+      <th>Size</th>
+      <th>Colour</th>
+      <th>Extra Details</th>
+      <th>Date Created</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,16 +24,16 @@
       <tr class="<%= cycle('even', 'odd') -%>">
         <td><%= item.user.name.capitalize %></td>
         <td><%= item.name.capitalize %></td>
-        <td><%= item.quantity %></td>
-        <td><%= item.colour %></td>
-        <td><%= item.size %></td>
-        <td><a href=<%=item.link %>>Link</td>
-        <td><%= item.detail %></td>
-        <td><%= item.created_at.strftime("%Y/%m/%d") %></td>
         <td class=<%= 'bought' if (item.item_bought && item.user != current_user)%> >
           <%= item.user != current_user ? item.bought_by : ''  %>
         </td>
-        <td><%= button_to "Item Bought", item_bought_path(item.id), id: "item_#{item.id}", method: :put, data: { confirm: 'Are you sure the item is bought? The item will disappear from your list if you say yes!' } %></td>
+        <td><%= link_to(item.link, item.link) %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.size %></td>
+        <td><%= item.colour %></td>
+        <td><%= item.detail %></td>
+        <td><%= item.created_at.strftime("%Y/%m/%d") %></td>
+        <td><%= button_to "Gift Bought", item_bought_path(item.id), id: "item_#{item.id}", method: :put, data: { confirm: 'Are you sure the item is bought? The item will be marked with your name if you say yes!' } %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -43,4 +43,4 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'New Gift', new_item_path %>

@@ -1,7 +1,7 @@
 <%= form_for(item) do |f| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this gift from being saved:</h2>
 
       <ul>
       <% item.errors.full_messages.each do |message| %>
@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Name*' %>
+    <%= f.label 'Gift Name*' %>
     <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Link*" %>
+    <%= f.url_field :link, placeholder: '(Whole link http or https)' %>
   </div>
 
   <div class="field">
@@ -22,26 +27,21 @@
   </div>
 
   <div class="field">
-    <%= f.label :colour %>
-    <%= f.text_field :colour %>
-  </div>
-
-  <div class="field">
     <%= f.label :size %>
     <%= f.text_field :size %>
   </div>
 
   <div class="field">
-    <%= f.label "Link* (You need the whole link http and https)" %>
-    <%= f.text_field :link %>
+    <%= f.label :colour %>
+    <%= f.text_field :colour %>
   </div>
 
   <div class="field">
-    <%= f.label :detail %>
+    <%= f.label :extra_details %>
     <%= f.text_field :detail %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Gift" %>
   </div>
 <% end %>
