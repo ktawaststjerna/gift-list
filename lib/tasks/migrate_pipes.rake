@@ -1,5 +1,5 @@
 namespace :migrate_pipes do
-  desc "TODO"
+  desc 'Migrates user to family relationships from Pipe table to UsersToFamilies table'
   task migrate_users_to_families: :environment do
     User.all.each do |user|
       user.families.each do |family|
@@ -7,9 +7,4 @@ namespace :migrate_pipes do
       end
     end
   end
-
-  desc "TODO"
-  task migrate_familes_to_items: :environment do
-  end
-
 end
