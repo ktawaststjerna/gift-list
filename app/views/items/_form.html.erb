@@ -1,7 +1,7 @@
 <%= form_for(item) do |f| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this gift from being saved:</h2>
 
       <ul>
       <% item.errors.full_messages.each do |message| %>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Item Name*' %>
+    <%= f.label 'Gift Name*' %>
     <%= f.text_field :name %>
   </div>
 
@@ -42,6 +42,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add Gift" %>
   </div>
 <% end %>

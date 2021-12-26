@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Items</h1>
+<h1>Gifts</h1>
 <h2>You Are: <%= current_user.name %></h2>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Item</th>
+      <th>Gift</th>
       <th>Bought By</th>
       <th>Link</th>
       <th>Quantity</th>
@@ -33,7 +33,7 @@
         <td><%= item.colour %></td>
         <td><%= item.detail %></td>
         <td><%= item.created_at.strftime("%Y/%m/%d") %></td>
-        <td><%= button_to "Item Bought", item_bought_path(item.id), id: "item_#{item.id}", method: :put, data: { confirm: 'Are you sure the item is bought? The item will disappear from your list if you say yes!' } %></td>
+        <td><%= button_to "Gift Bought", item_bought_path(item.id), id: "item_#{item.id}", method: :put, data: { confirm: 'Are you sure the item is bought? The item will disappear from your list if you say yes!' } %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -43,4 +43,4 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'New Gift', new_item_path %>
