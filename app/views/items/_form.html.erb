@@ -12,23 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label 'Name*' %>
+    <%= f.label 'Item Name*' %>
     <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity %>
-  </div>
-
-  <div class="field">
-    <%= f.label :colour %>
-    <%= f.text_field :colour %>
-  </div>
-
-  <div class="field">
-    <%= f.label :size %>
-    <%= f.text_field :size %>
   </div>
 
   <div class="field">
@@ -37,7 +22,22 @@
   </div>
 
   <div class="field">
-    <%= f.label :detail %>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= f.label :size %>
+    <%= f.text_field :size %>
+  </div>
+
+  <div class="field">
+    <%= f.label :colour %>
+    <%= f.text_field :colour %>
+  </div>
+
+  <div class="field">
+    <%= f.label :extra_details %>
     <%= f.text_field :detail %>
   </div>
 
