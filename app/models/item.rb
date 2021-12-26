@@ -2,7 +2,8 @@ class Item < ApplicationRecord
   include PipeConcern
 
   belongs_to :user
-  has_many :families, :through => :to_pipes, :source => :from, :source_type => 'Family'
+
+  has_many :families, through: :user
 
   validates :user, :name, :link, presence: true
   validates :quantity, :numericality => { :greater_than_or_equal_to => 1 }, allow_nil: true
