@@ -3,7 +3,7 @@ namespace :migrate_pipes do
   task migrate_users_to_families: :environment do
     User.all.each do |user|
       user.families.each do |family|
-        UsersToFamilies.find_or_create_by(user: user, family: family)
+        UsersToFamily.find_or_create_by(user: user, family: family)
       end
     end
   end
