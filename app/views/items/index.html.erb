@@ -1,7 +1,9 @@
-<p id="notice"><%= notice %></p>
+<p id='notice'><%= notice %></p>
 
-<h1>Gifts</h1>
-<h2>You Are: <%= current_user.name %></h2>
+<h1>The Giftlist! Put anything you want, you may just get it!</h1>
+<h3>You Are: <%= current_user.name.capitalize %></h3>
+
+<p><%= button_to 'New Gift', new_item_path %></p>
 
 <table>
   <thead>
@@ -40,7 +42,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Gift', new_item_path %>
