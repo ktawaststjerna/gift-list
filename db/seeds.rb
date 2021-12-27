@@ -9,19 +9,14 @@ User.create(name: 'leonard', password: 'test')
 User.create(name: 'heather', password: 'test')
 User.create(name: 'darcy', password: 'test')
 
-Pipe.create(to_type: 'User', to_id: 1, from_type: 'Family', from_id: 1)
-Pipe.create(to_type: 'User', to_id: 1, from_type: 'Family', from_id: 2)
+Family.find_by(name: 'McMahon').add_user_to_family(User.find_by(name: 'kevin'))
+Family.find_by(name: 'McMahon').add_user_to_family(User.find_by(name: 'andrew'))
+Family.find_by(name: 'McMahon').add_user_to_family(User.find_by(name: 'charlotte'))
+Family.find_by(name: 'McMahon').add_user_to_family(User.find_by(name: 'dale'))
 
-Pipe.create(to_type: 'User', to_id: 2, from_type: 'Family', from_id: 1)
-Pipe.create(to_type: 'User', to_id: 2, from_type: 'Family', from_id: 2)
-
-Pipe.create(to_type: 'User', to_id: 3, from_type: 'Family', from_id: 1)
-Pipe.create(to_type: 'User', to_id: 3, from_type: 'Family', from_id: 2)
-
-Pipe.create(to_type: 'User', to_id: 4, from_type: 'Family', from_id: 1)
-
-Pipe.create(to_type: 'User', to_id: 5, from_type: 'Family', from_id: 2)
-
-Pipe.create(to_type: 'User', to_id: 6, from_type: 'Family', from_id: 2)
-
-Pipe.create(to_type: 'User', to_id: 7, from_type: 'Family', from_id: 2)
+Family.find_by(name: 'Tawaststjerna').add_user_to_family(User.find_by(name: 'kevin'))
+Family.find_by(name: 'Tawaststjerna').add_user_to_family(User.find_by(name: 'andrew'))
+Family.find_by(name: 'Tawaststjerna').add_user_to_family(User.find_by(name: 'charlotte'))
+Family.find_by(name: 'Tawaststjerna').add_user_to_family(User.find_by(name: 'leonard'))
+Family.find_by(name: 'Tawaststjerna').add_user_to_family(User.find_by(name: 'heather'))
+Family.find_by(name: 'Tawaststjerna').add_user_to_family(User.find_by(name: 'darcy'))

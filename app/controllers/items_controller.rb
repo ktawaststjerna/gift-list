@@ -18,18 +18,7 @@ class ItemsController < ApplicationController
     @item.user_id = current_user.id
 
     respond_to do |format|
-      if @item.save
-        current_user.to_pipes.each do |pipe|
-          if pipe.from_type == "Family"
-            Pipe.create(
-              to_id: @item.id,
-              to_type: 'Item',
-              from_id: pipe.from_id,
-              from_type: 'Family'
-            )
-          end
-        end
-
+      if @item.save!
         format.html { redirect_to controller: 'items', action: 'index' }
         format.json { render :show, status: :created, location: @item }
       else

@@ -1,6 +1,4 @@
 class Item < ApplicationRecord
-  include PipeConcern
-
   belongs_to :user
 
   has_many :families, through: :user
