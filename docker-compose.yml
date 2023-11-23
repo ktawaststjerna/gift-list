@@ -6,14 +6,14 @@ services:
       - .env
     build: .
     volumes:
-      - .:/var/www
+      - .:/myapp
     ports:
       - "3000:3000"
     links:
       - db
 
   db:
-    image: postgres:9.6-alpine
+    image: postgres:9.6
     environment:
       - POSTGRES_USER=foo
       - POSTGRES_PASSWORD=foobar
