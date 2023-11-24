@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :get_family_users
 
   def index
-    @items = current_user.family_items
+    @items = current_user.family_items.order(item_bought: :desc, created_at: :desc)
   end
 
   def show
