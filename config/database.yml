@@ -5,11 +5,11 @@ default: &default
   timeout: 5000
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
-  host: <%= ENV['DATABASE_URL'] %>
 
 development:
   <<: *default
   database: giftlist_development
+  host: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -17,9 +17,11 @@ development:
 test:
   <<: *default
   database: giftlist_test
+  host: db
 
 production:
   <<: *default
   database: giftlist_production
   username: <%= ENV['DB_USERNAME'] %>
   password: <%= ENV['DB_PASSWORD'] %>
+  host: <%= ENV['DATABASE_URL'] %>

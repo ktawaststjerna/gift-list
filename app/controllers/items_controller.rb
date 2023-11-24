@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[show edit update destroy item_bought]
+  before_action :get_family_users
 
   def index
     @items = current_user.family_items
@@ -82,5 +83,9 @@ class ItemsController < ApplicationController
 
   def permission
     @item.user.id == current_user.id
+  end
+
+  def get_family_users
+    @users = User.where(id: UsersToFamily.where(family_id: current_user.families.ids).pluck(:user_id))
   end
 end
