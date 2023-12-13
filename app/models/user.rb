@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   def family_items_ordered
-    other_family_items = family_items.where(archived: false).where.not(user_id: id).distinct.order(user_id: :desc, item_bought: :desc, created_at: :desc)
+    other_family_items = family_items.where(archived: false).where.not(user_id: id).distinct.order(user_id: :asc, item_bought: :desc, created_at: :desc)
     users_family_items = family_items.where(archived: false, user_id: id).distinct.order(created_at: :desc)
     other_family_items + users_family_items
   end
